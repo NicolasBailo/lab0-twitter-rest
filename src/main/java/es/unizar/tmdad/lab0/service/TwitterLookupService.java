@@ -3,11 +3,13 @@ package es.unizar.tmdad.lab0.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.social.twitter.api.SearchMetadata;
 import org.springframework.social.twitter.api.SearchResults;
+import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.impl.TwitterTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class TwitterLookupService {
@@ -23,13 +25,18 @@ public class TwitterLookupService {
     @Value("${twitter.accessTokenSecret}")
     private String accessTokenSecret;
 
-    public SearchResults search(String query) {
+    public List<Tweet> search(String query) {
         Twitter twitter = new TwitterTemplate(consumerKey, consumerSecret, accessToken, accessTokenSecret);
-        return twitter.searchOperations().search(query);
+        SearchResults results = twitter.searchOperations().search(query);
+        return results.getTweets();
     }
 
     public SearchResults emptyAnswer() {
         return new SearchResults(Collections.emptyList(), new SearchMetadata(0,0 ));
     }
 }
+
+//TODO ¿Hacemos una clase más ligera para los tweets, con sólo lo necesario por el cliente?
+//public class MyTweet
+
 
