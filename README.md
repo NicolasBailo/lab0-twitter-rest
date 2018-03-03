@@ -4,3 +4,5 @@ La versión de partida de este repositorio es MVC.
 Se puede ver desplegada en [https://tmdad-lab0.herokuapp.com/](https://tmdad-lab0.herokuapp.com/).
 
 Tu objetivo es *RESTificarla*.
+
+Versión RESTificada y subida a Heroku: https://tmdad-lab0-nicolas.herokuapp.com
