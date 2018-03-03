@@ -5,7 +5,10 @@ function registerSearch() {
         var query = $("#q").val();
         $.get(target, { q: query } )
             .done( function(data) {
-                $("#resultsBlock").empty().append(data);
+                 var template = $('#template').html();
+                 Mustache.parse(template);   // optional, speeds up future uses
+                 var rendered = Mustache.render(template, {tweets: data});
+                $("#resultsBlock").empty().html(rendered);
             }).fail(function() {
             $("#resultsBlock").empty();
         });
@@ -13,7 +16,7 @@ function registerSearch() {
 }
 
 $(document).ready(function() {
-	registerSearch();
+    registerSearch();
 });
 
 

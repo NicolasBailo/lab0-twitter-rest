@@ -47,8 +47,30 @@
 <script defer="" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
         th:src="@{/webjars/font-awesome/5.0.6/svg-with-js/js/fontawesome-all.js}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
 <script th:src="@{/functions.js}"
         src="../static/functions.js"></script>
+
+<script id="template" type="text/HTML">
+    {{#tweets}}
+        <div class="card p-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a
+                            href="https://twitter.com/{{fromUser}}"
+                            target="_blank"><span class="fas fa-user"></span> <span>{{user}}</span></a>
+                    dice e
+                    <a
+                            href="https://twitter.com/{{fromUser}}/status/{{idStr}}"
+                            target="_blank"><span class="fab fa-twitter-square"></span> <span>{{idStr}}</span></a>
+                </h5>
+                <p class="card-text">{{unmodifiedText}}</p>
+            </div>
+        </div>
+    {{/tweets}}
+    <script defer="" src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</script>
 
 </body>
 </html>
